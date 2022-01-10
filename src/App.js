@@ -17,7 +17,7 @@ function App() {
           setWeather(result);
           setQuery("");
           //to get search object returned
-          // console.log(result);
+          console.log(result);
         });
     }
   };
@@ -74,7 +74,9 @@ function App() {
             value={query}
             onKeyPress={search}
           />
+          <h1 className="title">Weather App</h1>
         </div>
+
         {typeof weather.main != "undefined" ? (
           <div>
             <div className="location-box">
@@ -83,9 +85,20 @@ function App() {
               </div>
               <div className="date">{dateBuilder(new Date())}</div>
             </div>
+
             <div className="weather-box">
-              <div className="temp">{Math.round(weather.main.temp)}°F</div>
-              <div className="weather">{weather.weather[0].main}</div>
+              <div className="temp">
+                {Math.round(weather.main.temp)}°F
+                <br></br>
+                <div className="feels">
+                  Feels like: {Math.round(weather.main.feels_like)}°F{" "}
+                </div>
+              </div>
+
+              <div className="conditions">
+                <div className="weather-condition">Weather Condition:</div>
+                <div className="weather">{weather.weather[0].main}</div>
+              </div>
             </div>
           </div>
         ) : (
